@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 学习记录与速查表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylecss.css">
+</head>
+<body>
+
+<h1>CSS 学习记录与速查表</h1>
+
+<div>
+    <p>
+        这篇文档将作为我学习 CSS 的记录，
+        和 HTML 那一篇一样，它的目标并不是系统教学，
+        而是构建一个“用得多、查得快”的速查表。
+    </p>
+
+    <p>
+        在我目前的理解里，CSS 并不是一门“难”的东西，
+        但它非常零散，规则多、例外多，
+        如果只是看教程而不反复使用，
+        很容易陷入“看过但不会写”的状态。
+    </p>
+
+    <p>
+        因此，这份文档会优先记录：
+        常见属性、常见写法、常见坑，
+        而不是追求覆盖所有规范细节。
+    </p>
+</div>
+
+<h1>第零部分 CSS 是用来干什么的</h1>
+
+<p>
+在正式开始写 CSS 之前，
+有必要先明确一件事情：CSS 并不负责“内容是什么”，
+而是负责“内容该怎么显示”。
+</p>
+
+<p>
+HTML 回答的是“这是什么”，
+而 CSS 回答的是“它看起来应该是什么样子”。
+</p>
+
+<p>
+在浏览器中，
+HTML 构建的是文档结构，
+CSS 则是在这套结构之上，
+定义颜色、大小、布局和视觉层级。
+</p>
+
+<h1>第一部分 CSS 的三种引入方式</h1>
+
+<p>
+CSS 并不是只能写在一个地方。
+根据使用场景的不同，
+它可以通过三种方式引入到 HTML 文档中。
+</p>
+
+<h2>1. 内联样式（inline style）</h2>
+
+<p>
+内联样式是指直接写在 HTML 标签上的 CSS,哎呀其实说白了ius直接在HTML的块上设置一个。
+它的特点是<strong>作用范围最小、优先级最高</strong>，
+但可维护性极差。
+</p>
+
+<p>当然说是什么说，还是那句话，又不是造火箭……</p>
+
+<pre><code>
+&lt;p style="color: red; font-size: 16px;"&gt;
+    这是一段使用内联样式的文字
+&lt;/p&gt;
+</code></pre>
+
+<h2>2. 内部样式表（style 标签）</h2>
+
+<p>
+内部样式表是将 CSS 写在 HTML 文件的 &lt;style&gt; 标签中，
+通常放在 &lt;head&gt; 内部。
+</p>
+
+<pre><code>
+&lt;style&gt;
+    p {
+        color: blue;
+        font-size: 16px;
+    }
+&lt;/style&gt;
+</code></pre>
+
+<p>
+这种方式适合页面结构简单、
+不需要复用样式的场景，
+但仍然不利于多页面维护。
+</p>
+
+<p>PS:我觉得这是最垃圾的一种</p>
+
+<h2>3. 外部样式表（推荐）</h2>
+
+<p>
+外部样式表是将 CSS 写在独立的 .css 文件中，
+再通过 &lt;link&gt; 标签引入。
+这是最常见、也是最推荐的做法。
+</p>
+
+<pre><code>
+&lt;link rel="stylesheet" href="stylecss.css"&gt;
+</code></pre>
+
+<p>
+这种方式可以实现样式复用，
+也能让 HTML 和 CSS 各自保持清晰的职责边界。
+</p>
+
+<p>
+在后续内容中，
+除非特别说明，
+本文档默认使用外部样式表的方式编写 CSS。
+</p>
+
+<h1>接下来将介绍常见的CSS设置项</h1>
+<h1>第二部分 常见 CSS 设置项及其作用</h1>
+
+<p>
+在实际写 CSS 的过程中，
+真正高频使用的属性并不多。
+大多数时候，我们是在反复使用同一批属性，
+只是组合方式不同。
+</p>
+
+<p>
+这一部分将记录一些最常见、最基础，
+也是最容易在初学阶段产生混淆的 CSS 设置项。
+</p>
+
+<h2>1. display：元素如何参与布局</h2>
+
+<p>
+display 属性决定了一个元素在页面中的“基本行为方式”，
+也就是它是独占一行，还是和其他元素并排，
+以及它是否参与布局计算。
+</p>
+
+<p>
+最常见的几种取值如下。
+</p>
+
+<pre><code>
+display: block;
+display: inline;
+display: inline-block;
+display: none;
+</code></pre>
+
+<p>
+block 元素会独占一整行，
+常见的如 div、p、h1 等；
+inline 元素不会换行，
+宽高通常由内容决定；
+inline-block 则介于两者之间，
+既可以设置宽高，又可以并排显示。
+</p>
+
+<p>
+display: none 表示元素完全不参与页面布局，
+它既不会显示，也不会占据空间。
+</p>
+
+<h2>2. flex：一种布局方式，而不是单个属性</h2>
+
+<p>
+flex 并不是一个独立的属性，
+而是一整套布局模型。
+当一个元素被设置为 flex 容器时，
+它的直接子元素将按照“弹性布局”的规则进行排列。
+</p>
+
+<pre><code>
+.container {
+    display: flex;
+}
+</code></pre>
+
+<p>
+一旦启用 flex，
+布局的关注点就从“元素本身”转移到了“父子关系”上。
+flex 容器控制的是子元素如何排列，
+而不是子元素自己决定位置。
+</p>
+
+<p>
+最常见的几个 flex 相关属性包括：
+</p>
+
+<pre><code>
+flex-direction: row;
+justify-content: center;
+align-items: center;
+</code></pre>
+
+<p>
+flex-direction 决定主轴方向；
+justify-content 控制子元素在主轴上的排列方式；
+align-items 控制子元素在交叉轴上的对齐方式。
+</p>
+
+<p>
+在很多居中布局场景下，
+flex 是目前最直接、最稳定的解决方案。
+</p>
+
+<h2>3. width 与 height：尺寸的直接控制</h2>
+
+<p>
+width 和 height 用于设置元素的宽度和高度，
+但它们是否生效，
+取决于元素的 display 类型。
+</p>
+
+<pre><code>
+.box {
+    width: 200px;
+    height: 100px;
+}
+</code></pre>
+
+<p>
+对于 inline 元素，
+width 和 height 通常是无效的；
+而 block 和 inline-block 元素，
+则可以正常设置尺寸。
+</p>
+
+<h2>4. margin 与 padding：元素之间与元素内部的空间</h2>
+
+<p>
+margin 用于控制元素与元素之间的距离，
+padding 用于控制元素内容与边框之间的距离。
+</p>
+
+<pre><code>
+.box {
+    margin: 20px;
+    padding: 10px;
+}
+</code></pre>
+
+<p>
+这两个属性并不会改变内容本身，
+但会直接影响页面的整体布局和视觉节奏。
+</p>
+
+<h2>5. border：元素的边界</h2>
+
+<p>
+border 用于给元素添加边框，
+它由宽度、样式和颜色三部分组成。
+</p>
+
+<pre><code>
+.box {
+    border: 1px solid #000;
+}
+</code></pre>
+
+<p>
+在调试布局时，
+给元素临时加上 border，
+是一种非常常见也非常有效的手段。
+</p>
+
+<h2>6. color 与 background-color：文字与背景</h2>
+
+<p>
+color 用于设置文字颜色，
+background-color 用于设置元素的背景色。
+</p>
+
+<pre><code>
+.text {
+    color: #333;
+    background-color: #f5f5f5;
+}
+</code></pre>
+
+<p>
+需要注意的是，
+background-color 作用于整个元素区域，
+包括 padding 和内容区域。
+</p>
+
+<p>
+以上这些属性，
+构成了日常写 CSS 时最基本的一套工具。
+后续更复杂的布局和效果，
+本质上都是在这些基础属性之上的组合与扩展。
+</p>
+</body>
+</html>

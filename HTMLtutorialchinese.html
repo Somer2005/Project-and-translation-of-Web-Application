@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>一个使用HTML实现的常见HTML代码表</title>
+        <link rel="stylesheet"type="text/css"href="stylecss.css">
+    </head>
+    <body>
+        <h1>常见html</h1>
+        <div>这个文档将作为我第一次学习前端的记录，会同时出现在我的个人技术博客和我的学前端的项目里面，往后争取我的各种笔记和各种学习内容都上博客。
+            <p>
+            我对前端的理解其实就是背书背书背书，html说到底内容真的不多，css也是，我觉得这种东西要是要靠反复背诵才能信手拈来那他妈可真是完蛋了，于是我的想法就是写一个速查表，用多了就会了。
+        </div>
+
+        <h2>开头部分的处理：关于 &lt;!DOCTYPE&gt; 以及后面的内容，包括 &lt;head&gt; 部分的处理</h2>
+
+<p>
+在正式开始写页面内容之前，HTML 文档本身也需要一个“合法的开头”。
+这个开头并不会直接显示在页面上，但它决定了浏览器应当
+“以什么规则来理解后面的所有内容”。
+</p>
+
+<p>
+第一行通常是 &lt;!DOCTYPE&gt; 声明。
+</p>
+
+<p>
+&lt;!DOCTYPE&gt; 并不是一个 HTML 标签，
+而是一条<strong>文档类型声明</strong>，
+它的作用是告诉浏览器：当前文档使用的是哪一种 HTML 规范。
+</p>
+
+<pre><code>
+&lt;!DOCTYPE html&gt;
+</code></pre>
+
+<p>
+在现代 Web 开发中，这一行几乎是固定写法，
+表示使用 HTML5 标准。
+如果省略这一行，浏览器可能会进入“兼容模式”，
+从而导致一些布局和样式行为变得不可预测。
+</p>
+
+<p>
+在 &lt;!DOCTYPE&gt; 之后，紧接着是 &lt;html&gt; 标签，
+它是整个 HTML 文档的根元素。
+通常会在这里声明页面的主要语言，
+这对搜索引擎和无障碍工具都非常重要。
+</p>
+
+<pre><code>
+&lt;html lang="zh-CN"&gt;
+</code></pre>
+
+<p>
+接下来是 &lt;head&gt; 部分。
+&lt;head&gt; 中的内容不会直接显示在页面上，
+但它们定义了页面的元信息、编码方式、标题以及外部资源的引入方式。
+</p>
+
+<p>
+在 &lt;head&gt; 中最重要的一项，是字符编码声明。
+</p>
+
+<pre><code>
+&lt;meta charset="UTF-8"&gt;
+</code></pre>
+
+<p>
+这一行用于声明文档使用 UTF-8 编码，
+如果缺失或设置错误，中文内容很容易出现乱码问题。
+</p>
+
+<p>
+另一个几乎必不可少的是视口设置，
+它主要用于控制页面在移动设备上的显示方式。
+</p>
+
+<pre><code>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</code></pre>
+
+<p>
+页面的标题通过 &lt;title&gt; 标签指定，
+它不会显示在正文中，
+但会显示在浏览器标签页、收藏夹以及搜索结果中。
+</p>
+
+<pre><code>
+&lt;title&gt;一个使用 HTML 实现的常见 HTML 代码表&lt;/title&gt;
+</code></pre>
+
+<p>
+此外，&lt;head&gt; 中还常用于引入外部资源，
+例如 CSS 样式表。
+</p>
+
+<pre><code>
+&lt;link rel="stylesheet" type="text/css" href="stylecss.css"&gt;
+</code></pre>
+
+<p>
+总体来说，
+&lt;head&gt; 负责回答的是“这个页面是什么、该如何被解析”，
+而不是“这个页面展示了什么内容”。
+真正可见的页面结构与文本，
+则全部放在后面的 &lt;body&gt; 中。
+</p>
+
+        <h2>第零部分 特殊符号的表示</h2>
+        在第零，第一，第二部分，将会记录构建这个页面所需要的内容，那么第一条，就是常见的特殊符号了。
+    <table>
+    <tr>
+        <th>符号</th>
+        <th>代码表示</th>
+    </tr>
+    <tr>
+        <td>&lt;</td>
+        <td>&amp;lt;</td>
+    </tr>
+    <tr>
+        <td>&gt;</td>
+        <td>&amp;gt;</td>
+    </tr>
+    <tr>
+        <td>&amp;</td>
+        <td>&amp;amp;</td>
+    </tr>
+    <tr>
+        <td>"</td>
+        <td>&amp;quot;</td>
+    </tr>
+    <tr>
+        <td>'</td>
+        <td>&amp;apos;</td>
+    </tr>
+    <tr>
+        <td>空格</td>
+        <td>&amp;nbsp;</td>
+    </tr>
+    <tr>
+        <td>©</td>
+        <td>&amp;copy;</td>
+    </tr>
+    <tr>
+        <td>®</td>
+        <td>&amp;reg;</td>
+    </tr>
+    </table>
+
+        <h2>第一部分 表格元素的实现</h2>
+        <div><p>为什么我会先在第一部分讲表格元素的实现呢？</p>
+            <p>原因非常简单，因为我现在也不会……用HTML做表格的话，我看ChatGPT讲的好多，我来一个一个实现一下</p>
+            <p>表格元素的实现方法主要有三种，首先是这种表格：</p>
+            <table>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>C</th>
+                    <th>D</th>
+                </tr>
+            </table>
+            <p>这种表格就是一个非常典型的表，让我展示一下这个代码块。</p>
+            <pre><code class="language-html">
+                &lt;table&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;A&lt;/th&gt;
+                        &lt;th&gt;B&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;A&lt;/th&gt;
+                        &lt;th&gt;B&lt;/th&gt;
+                    &lt;/tr&gt;
+            </code></pre>
+            <p>从上面的表格中我们就可以非常轻松地发现了，对于HTML而言，一个&lt;tr&gt;是一行，而一行有几列，取决于里面有几个&lt;th&gt;</p>
+        </div>
+<h2>第二部分 代码块的展示方法</h2>
+    <div>
+            <p>在编写教程文档或博客时，经常需要展示代码块。HTML 提供了多种方式来呈现代码：</p>
+            
+            <h2>1. 使用 &lt;pre&gt; 和 &lt;code&gt; 标签</h2>
+            <p>这是最语义化的方式，用来展示代码或预格式化文本（保留所有空格和换行）：</p>
+            <p><strong>代码示例：</strong></p>
+            <pre><code>&lt;pre&gt;
+  &lt;code&gt;
+    function hello() {
+      console.log('Hello World');
+    }
+  &lt;/code&gt;
+&lt;/pre&gt;</code></pre>
+            
+            <p><strong>实际效果：</strong></p>
+            <pre><code>function hello() {
+  console.log('Hello World');
+}</code></pre>
+
+            <h2>2. 使用 &lt;pre&gt; 标签单独</h2>
+            <p>&lt;pre&gt; 标签可以单独使用，它会保留文本的所有空格和换行。不加 &lt;code&gt; 也能正常工作：</p>
+            <p><strong>效果：</strong></p>
+            <pre>const arr = [1, 2, 3];
+arr.forEach(item => {
+  console.log(item);
+});</pre>
+
+            <h2>3. 使用 &lt;code&gt; 标签（内联代码）</h2>
+            <p>用于在段落中展示短代码片段。例如：变量名 <code>userName</code> 或方法 <code>parseInt()</code>。</p>
+
+            <h2>4. 结合 CSS 美化代码块</h2>
+            <p>为了更好的阅读体验，可以用 CSS 添加背景色、边框和字体：</p>
+            <pre><code>pre {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}</code></pre>
+<p>那么我们来解决最后一个问题：既然&lt;prt&gt;就有作用，那我为什么还要用&lt;code&gt;呢？</p>
+<p>实际上，这是一个“声明符”，声明符是什么意思？就是类似注释的作用。我们知道HTML在Web开发中扮演的角色是回答“这是什么”的问题的，对肉眼来说没有区别，但是这对搜索引擎和翻译器会很友好。</p>
+<h2>第三部分 &lt;div&gt;、&lt;section&gt;、&lt;article&gt; 与 &lt;nav&gt; 的区别与应用场景</h2>
+
+<p>
+在写 HTML 的时候，最容易让人迷惑的并不是语法，而是“我现在该用哪个标签”。
+尤其是 &lt;div&gt;、&lt;section&gt;、&lt;article&gt; 和 &lt;nav&gt;，
+它们在页面显示效果上几乎没有任何区别，但在语义层面上差异非常大。
+</p>
+
+<p>
+首先从最基础、也是最容易被滥用的 &lt;div&gt; 说起。
+</p>
+
+<p>
+&lt;div&gt; 是一个<strong>完全没有语义</strong>的通用容器。
+它的唯一作用，就是“把一坨东西包起来”。
+如果你只是为了布局、加样式、方便 JavaScript 操作，
+而这部分内容本身并不表达任何文档结构含义，那么用 &lt;div&gt; 是合理的。
+</p>
+
+<pre><code>
+&lt;div class="container"&gt;
+    &lt;div class="left"&gt;左侧内容&lt;/div&gt;
+    &lt;div class="right"&gt;右侧内容&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>
+接下来是 &lt;section&gt;。
+&lt;section&gt; 用来表示<strong>文档中的一个逻辑章节</strong>，
+通常应该包含一个标题。
+它强调的是“这一部分在讲同一个主题”，
+但并不要求这部分内容可以脱离上下文独立存在。
+</p>
+
+<pre><code>
+&lt;section&gt;
+    &lt;h2&gt;安装说明&lt;/h2&gt;
+    &lt;p&gt;这里描述软件的安装步骤。&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>
+&lt;article&gt; 则更进一步。
+它表示的是一段<strong>语义上完整、可独立存在</strong>的内容。
+即使把这段内容单独拿出去，
+读者依然能理解它在讲什么。
+</p>
+
+<pre><code>
+&lt;article&gt;
+    &lt;h2&gt;Linux 配置迁移指南&lt;/h2&gt;
+    &lt;p&gt;本文介绍如何完整迁移一台 Linux 设备的配置。&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>
+最后是 &lt;nav&gt;。
+&lt;nav&gt; 专门用于包裹<strong>导航相关的链接集合</strong>，
+它关注的不是内容本身，而是页面或文档之间的跳转关系。
+</p>
+
+<pre><code>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#part1"&gt;第一部分&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#part2"&gt;第二部分&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#part3"&gt;第三部分&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<p>
+简单总结一下：
+&lt;div&gt; 只是容器；
+&lt;section&gt; 是文档中的章节；
+&lt;article&gt; 是可以独立存在的内容单元；
+而 &lt;nav&gt; 则只用于导航。
+在不确定的时候，优先考虑是否能赋予语义，
+只有在“确实没有语义”的情况下，才使用 &lt;div&gt;。
+<p>但是……</p>
+<p>由于在这个时代，我们几乎已经用不上静态网页了，所以，div被使用的极为广泛，但我们仍然需要了解一些这方面的知识。</p>
+
+
+
+<h2>持续补充中……等到我需要的时候再来补</h2>
+    </body>
