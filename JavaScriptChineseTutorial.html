@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"content="width=device-width,initial-scale=1.0">
+        <title>JavaScript中文简单记忆手册/title>
+        <link rel="stylesheet"type="text/css"href="css">
+    </head>
+    <h1>写在前面</h1>
+    <div>
+    <p>JavaScript这个东西要手册毕竟有神经病的嫌疑……毕竟这玩意儿和CSS、HTML不一样，更像cpp这种一点，纯背书没什么意义。</p>
+    <p>但是我依然还要写！因为我想练我的HTML功底……</p>
+    </div>
+    <h1>JavaScript的变量们</h1>
+    <div>
+        JavaScript的变量规则与python类似，包括两种变量，分别是Local变量与global变量。
+        <p>这个其实蛮好理解的，global变量就是我整个程序里都能用，而local变量就是我只能用于我这个函数，离了这个函数这玩意儿就不存在。
+        <p>HTML是真好用啊……比那Pytorch简单多了……</p>
+        <p>值得注意的是，我们在使用全局变量的时候，和其他程序中一样，必须要考虑好变量的矛盾问题，因此我们一般情况下，会在函数开始的时候就设计好这个函数要用的变量。
+        <p>同时，这里我们要介绍"let"。</p>
+        <table>
+            <tr>
+                <th>let</th>
+                <th>var</th>
+            </tr>
+            <tr>
+                <th>let声明的变量永远只作用于最近的{}中。</th>
+                <th>而var声明的变量则不同，它的作用域是整个函数体。</th>
+                <th>此外，var是允许出现重复声明的，但let不允许。</th>
+            </tr>
+        </table>
+        <p>接下来我们将介绍JavaScript的变量及其类型，还有更改变量类型的方法。</p>
+        <table>
+            <tr>
+                <th>变量类型</th>
+                <th>说明</th>
+                <th>示例</th>
+            </tr>
+            <tr>
+                <td>Number</td>
+                <td>表示整数和浮点数。</td>
+                <td>let num = 42; let pi = 3.14;</td>
+            </tr>
+            <tr>
+                <td>String</td>
+                <td>表示文本数据。</td>
+                <td>let str = "Hello, World!";</td>
+            </tr>
+            <tr>
+                <td>Boolean</td>
+                <td>表示真或假。</td>
+                <td>let isTrue = true; let isFalse = false;</td>
+            </tr>
+            <tr>
+                <td>Array</td>
+                <td>表示有序的元素集合。</td>
+                <td>let arr = [1, 2, 3];</td>
+            </tr>
+            <tr>
+                <td>Object</td>
+                <td>表示键值对的集合。</td>
+                <td>let obj = {name: "Alice", age: 25};</td>
+            </tr>
+        </table>
+        <p>要更改变量类型，可以使用以下方法：</p>
+        <table>
+            <tr>
+                <th>方法</th>
+                <th>说明</th>
+                <th>示例</th>
+            </tr>
+            <tr>
+                <td>Number()</td>
+                <td>将值转换为数字类型。</td>
+                <td>let numStr = "42"; let num = Number(numStr);</td>
+            </tr>
+            <tr>
+                <td>String()</td>
+                <td>将值转换为字符串类型。</td>
+                <td>let num = 42; let str = String(num);</td>
+            </tr>
+            <tr>
+                <td>Boolean()</td>
+                <td>将值转换为布尔类型。</td>
+                <td>let str = ""; let bool = Boolean(str);</td>
+            </tr>
+            <tr>
+                <td><pre><code>int i = 100
+                    typeof x == "number"</code></pre></td>
+                <td>使用typeof运算符检查变量类型。</td>
+                <td>这里有一个非常容易产生的误解，就是typeof不会改变变量类型。</td>
+            </tr>
+    </div>
+</html>
